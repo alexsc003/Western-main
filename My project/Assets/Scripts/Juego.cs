@@ -12,7 +12,7 @@ public class Juego : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI puntuacionTexto;
     [SerializeField]
-    TextMeshProUGUI puntuacionfinalTexto;
+    TextMeshProUGUI puntuacionFinalTexto;
     [SerializeField]
     GameObject[] arrayPersonajes;
     [SerializeField]
@@ -28,8 +28,6 @@ public class Juego : MonoBehaviour
     float tiempo = 60;
     float puntuacion;
     int i;
-    float o;
-
     float respawn;
 
     void Update()
@@ -45,12 +43,21 @@ public class Juego : MonoBehaviour
             {
                 if (arrayPersonajes[i].activeSelf)
                     Debug.Log("Ya Creado");
+                
                 else
+                { 
                     arrayPersonajes[i].SetActive(true);
                     respawn = 0;
+                }
             }
         }
+        if (tiempo <= 0)
+        {
+            popUpResultados.SetActive(true);
+            puntuacionFinalTexto.text = puntuacion.ToString("000") + "S";
+        }
     }
+    
             public void Disparar()
             {
                 {
